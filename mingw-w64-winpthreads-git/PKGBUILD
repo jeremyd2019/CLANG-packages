@@ -135,4 +135,22 @@ package_mingw-w64-clang-x86_64-libwinpthread-git() {
   package_libwinpthread
 }
 
+# 32-bit arm wrappers
+package_mingw-w64-clang-armv7-winpthreads-git() {
+  package_winpthreads
+}
+
+package_mingw-w64-clang-armv7-libwinpthread-git() {
+  package_libwinpthread
+}
+
+# 64-bit arm wrappers
+package_mingw-w64-clang-aarch64-winpthreads-git() {
+  package_winpthreads
+}
+
+package_mingw-w64-clang-aarch64-libwinpthread-git() {
+  package_libwinpthread
+}
+
 # [1] https://locklessinc.com/articles/pthreads_on_windows/
