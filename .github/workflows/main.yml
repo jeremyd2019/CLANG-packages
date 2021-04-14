@@ -40,6 +40,11 @@ jobs:
         run: |
           sed -i '1s|^|[staging]\nServer = https://repo.msys2.org/staging/\nSigLevel = Never\n|' /etc/pacman.conf
 
+      - name: Add testing cross clang repo
+        shell: msys2 {0}
+        run: |
+          sed -i '1s|^|[msys-cross-arm]\nServer = https://github.com/jeremyd2019/MSYS2-packages/releases/download/cross-clang-arm-20210414/\nSigLevel = Never\n|' /etc/pacman.conf
+
       - name: Update using staging
         run: |
           msys2 -c 'pacman --noconfirm -Suuy'
