@@ -40,7 +40,7 @@ makedepends=(
              $([[ "$_generator" == "Ninja" ]] && echo \
                "${MINGW_PACKAGE_PREFIX}-ninja")
              )
-options=('!debug' 'strip')
+options=('!debug' '!strip')
 _url=https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}
 source=(${_url}/llvm-${pkgver}.src.tar.xz{,.sig}
         ${_url}/clang-${pkgver}.src.tar.xz{,.sig}
@@ -189,7 +189,7 @@ build() {
     extra_config+=(-DCMAKE_BUILD_TYPE=Debug)
     VERBOSE="VERBOSE=1"
   else
-    extra_config+=(-DCMAKE_BUILD_TYPE=Release)
+    extra_config+=(-DCMAKE_BUILD_TYPE=RelWithDebInfo)
   fi
 
   local -a platform_config
@@ -252,7 +252,7 @@ build() {
 
   # Force win32 threads for libc++abi
   export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_HAS_THREAD_API_WIN32"
-  COMMON_CMAKE_ARGS=(-DCMAKE_BUILD_TYPE=Release
+  COMMON_CMAKE_ARGS=(-DCMAKE_BUILD_TYPE=RelWithDebInfo
     -DCMAKE_CROSSCOMPILING=OFF
     -DCMAKE_INSTALL_PREFIX=${MINGW_PREFIX}
     -DCMAKE_SYSTEM_IGNORE_PATH=/usr/lib
