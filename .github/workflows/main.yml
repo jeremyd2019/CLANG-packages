@@ -11,7 +11,7 @@ jobs:
       matrix:
         include: [
           { msystem: CLANG64, repo: clang64, arch: x86_64, can-fail: false },
-          { msystem: CLANG32, repo: clang32, arch: i686, can-fail: false },
+          { msystem: CLANG32, repo: clang32, arch: i686, can-fail: true },
           #{ msystem: CLANGARM64, arch: aarch64, can-fail: true },
         ]
     name: ${{ matrix.msystem }}-1
@@ -113,7 +113,7 @@ jobs:
       matrix:
         include: [
           { msystem: CLANG64, repo: clang64, arch: x86_64, can-fail: false },
-          { msystem: CLANG32, repo: clang32, arch: i686, can-fail: false },
+          { msystem: CLANG32, repo: clang32, arch: i686, can-fail: true },
           #{ msystem: CLANGARM64, arch: aarch64, can-fail: true },
         ]
     name: ${{ matrix.msystem }}-2
@@ -233,7 +233,7 @@ jobs:
       matrix:
         include: [
           { tagname: clang64, artifact: CLANG64-packages, can-fail: false },
-          { tagname: clang32, artifact: CLANG32-packages, can-fail: false },
+          { tagname: clang32, artifact: CLANG32-packages, can-fail: true },
           #{ tagname: clangarm64, artifact: CLANGARM64-packages, can-fail: true },
           { tagname: sources, artifact: sources, can-fail: false },
         ]
