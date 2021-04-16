@@ -43,6 +43,7 @@ for package in "${packages[@]}"; do
     execute 'Fetch keys' "$DIR/fetch-validpgpkeys.sh"
     execute 'Building binary' makepkg-mingw --noconfirm --noprogressbar --nocheck --syncdeps --rmdeps --cleanbuild
     MINGW_ARCH=clang64 execute 'Building source' makepkg-mingw --noconfirm --noprogressbar --allsource
+    rm -rf src pkg
     echo "::endgroup::"
 
     echo "::group::[install] ${package}"
