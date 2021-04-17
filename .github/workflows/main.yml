@@ -62,13 +62,14 @@ jobs:
           MINGW_ARCH=${{ matrix.msystem }} ./.ci/ci-build.sh
 
       - name: "Upload binaries"
+        if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.msystem }}-packages
           path: C:/_/packages/*
 
       - name: "Upload sources"
-        if:  ${{ matrix.msystem == 'CLANG64' }}
+        if:  ${{ always() && matrix.msystem == 'CLANG64' }}
         uses: actions/upload-artifact@v2
         with:
           name: sources
