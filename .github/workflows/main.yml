@@ -45,7 +45,7 @@ jobs:
       - name: Add stage1 bootstrap repo
         shell: msys2 {0}
         run: |
-          sed -i '1s|^|[${{ matrix.repo }}]\nServer = https://github.com/msys2/CLANG-packages/releases/download/bootstrap-${{ matrix.repo }}/\nSigLevel = Never\n|' /etc/pacman.conf
+          sed -i '1s|^|[${{ matrix.repo }}]\nServer = https://github.com/${{ github.repository }}/releases/download/bootstrap-${{ matrix.repo }}/\nSigLevel = Never\n|' /etc/pacman.conf
 
       - name: Update using staging
         run: |
@@ -147,7 +147,7 @@ jobs:
       - name: Add stage1 bootstrap repo
         shell: msys2 {0}
         run: |
-          sed -i '1s|^|[${{ matrix.repo }}]\nServer = https://github.com/msys2/CLANG-packages/releases/download/bootstrap-${{ matrix.repo }}/\nSigLevel = Never\n|' /etc/pacman.conf
+          sed -i '1s|^|[${{ matrix.repo }}]\nServer = https://github.com/${{ github.repository }}/releases/download/bootstrap-${{ matrix.repo }}/\nSigLevel = Never\n|' /etc/pacman.conf
 
       - name: Update using staging
         run: |
