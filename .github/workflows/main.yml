@@ -84,6 +84,11 @@ jobs:
           cd /C/_
           git am --committer-date-is-author-date -3 ${WORKSPACE}/01*.patch
 
+      - name: Tweak CLANG32 LDFLAGS
+        shell: msys2 {0}
+        run: |
+          sed -i -e '/CLANG32/,/^elif/ { s/\(\s*LDFLAGS="[^"]\+\)"/\1 -Wl,-Xlink=-threads:1"/ }' /etc/makepkg_mingw.conf
+
       - name: Workaround PLY cert issue
         shell: cmd
         run: |
@@ -185,6 +190,11 @@ jobs:
           WORKSPACE="$(pwd)"
           cd /C/_
           git am --committer-date-is-author-date -3 ${WORKSPACE}/01*.patch
+
+      - name: Tweak CLANG32 LDFLAGS
+        shell: msys2 {0}
+        run: |
+          sed -i -e '/CLANG32/,/^elif/ { s/\(\s*LDFLAGS="[^"]\+\)"/\1 -Wl,-Xlink=-threads:1"/ }' /etc/makepkg_mingw.conf
 
       - name: Workaround PLY cert issue
         shell: cmd

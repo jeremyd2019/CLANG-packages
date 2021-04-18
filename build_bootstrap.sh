@@ -10,7 +10,7 @@ source "${scriptpath}/packages${stepnum}.sh"
 for p in "${pkgs[@]}"; do
   pushd mingw-w64-$p
   ${scriptpath}/fetch-validpgpkeys.sh
-  if [[ $MSYSTEM == *32 ]]; then
+  if false && [[ $MSYSTEM == *32 ]]; then
     i=0
     until time makepkg --config /etc/makepkg_mingw.conf --noconfirm --noprogressbar --nocheck --syncdeps --rmdeps --cleanbuild --install -f; do
       ret=$?
